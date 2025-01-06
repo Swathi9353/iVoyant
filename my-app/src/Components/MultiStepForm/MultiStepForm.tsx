@@ -1,7 +1,12 @@
-import React, { useState, ReactNode, FC } from 'react';
+import React, { useState, ReactElement, FC } from 'react';
+
+interface StepProps {
+  data: Record<string, any>;
+  onChange: (data: Record<string, any>) => void;
+}
 
 interface MultiStepFormProps {
-  steps: ReactNode[];
+  steps: ReactElement<StepProps>[];
 }
 
 const MultiStepForm: FC<MultiStepFormProps> = ({ steps }) => {
@@ -28,11 +33,9 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ steps }) => {
     console.log('Form submitted:', formData);
   };
 
-  const CurrentStep = steps[currentStepIndex];
-
   return (
     <div>
-      {React.cloneElement(CurrentStep as React.ReactElement<any>, { data: formData, onChange: handleChange })}
+      {React.cloneElement(steps[currentStepIndex], { data: formData, onChange: handleChange })}
       <div>
         {currentStepIndex > 0 && <button onClick={handlePrevious}>Previous</button>}
         {currentStepIndex < steps.length - 1 ? (
