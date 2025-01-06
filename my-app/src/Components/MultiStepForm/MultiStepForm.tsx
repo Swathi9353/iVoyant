@@ -33,9 +33,11 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ steps }) => {
     console.log('Form submitted:', formData);
   };
 
+  const CurrentStep = steps[currentStepIndex];
+
   return (
     <div>
-      {React.cloneElement(steps[currentStepIndex], { data: formData, onChange: handleChange })}
+      {React.cloneElement(CurrentStep, { data: formData, onChange: handleChange })}
       <div>
         {currentStepIndex > 0 && <button onClick={handlePrevious}>Previous</button>}
         {currentStepIndex < steps.length - 1 ? (
