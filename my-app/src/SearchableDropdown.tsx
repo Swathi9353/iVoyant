@@ -27,7 +27,7 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({ options, onSele
   };
 
   return (
-    <div>
+    <div style={{ position: 'relative', width: '200px' }}>
       <input
         type="text"
         value={searchTerm}
