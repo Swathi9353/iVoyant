@@ -12,6 +12,7 @@ interface MultiStepFormProps {
 const MultiStepForm: FC<MultiStepFormProps> = ({ steps }) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [formData, setFormData] = useState<Record<string, any>>({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleNext = () => {
     if (currentStepIndex < steps.length - 1) {
@@ -30,8 +31,17 @@ const MultiStepForm: FC<MultiStepFormProps> = ({ steps }) => {
   };
 
   const handleSubmit = () => {
-    console.log('Form submitted:', formData);
+    setIsSubmitted(true);
   };
+
+  if (isSubmitted) {
+    return (
+      <div>
+        <h2>Form Submitted</h2>
+        <pre>{JSON.stringify(formData, null, 2)}</pre>
+      </div>
+    );
+  }
 
   const CurrentStep = steps[currentStepIndex];
 
