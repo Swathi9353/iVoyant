@@ -1,15 +1,13 @@
 import React from 'react';
+import { PersonProps } from '../types/types';
 
-interface PersonProps {
-  name: string;
-  age: number;
-}
 
-const Person: React.FC<PersonProps> = (props) => {
+
+const Person: React.FC<PersonProps> = ({name,age}) => {
   return (
     <div>
-      <h2>Name: {props.name}</h2>
-      <p>Age: {props.age}</p>
+      <h2>Name: {name}</h2>
+      <p>Age: {age}</p>
     </div>
   );
 };

@@ -1,10 +1,5 @@
 import React from 'react';
-
-interface ProductProps {
-  name: string;
-  price: number;
-}
-
+import { ProductProps } from '../types/types';
 const Product: React.FC<ProductProps> = (props) => {
   return (
     <div>
