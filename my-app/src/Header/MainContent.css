@@ -2,13 +2,16 @@
 main {
   padding: 20px;
   background-color: #f9f9f9;
+  width: 250%;
 }
 
 main h2 {
   color: #333;
+  text-align: center;
 }
 
 main p {
   color: #555;
   line-height: 1.6;
+  text-align: center;
 }
