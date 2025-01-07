@@ -34,6 +34,7 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({ options, onSele
         onChange={handleChange}
         onFocus={() => setShowOptions(true)}
         placeholder="Search..."
+
         style={{ width: '100%', padding: '8px', boxSizing: 'border-box' }}
       />
       {showOptions && (
@@ -48,6 +49,8 @@ const SearchableDropdown: React.FC<SearchableDropdownProps> = ({ options, onSele
             margin: 0,
             padding: 0,
             listStyleType: 'none',
+            
+            
           }}
         >
           {filteredOptions.map(option => (
