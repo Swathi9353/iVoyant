@@ -3,11 +3,11 @@ import { PersonProps } from '../types/types';
 
 
 
-const Person: React.FC<PersonProps> = ({name,age}) => {
+const Person: React.FC<PersonProps> = (Props) => {
   return (
     <div>
-      <h2>Name: {name}</h2>
-      <p>Age: {age}</p>
+      <h2>Name: {Props.name}</h2>
+      <p>Age: {Props.age}</p>
     </div>
   );
 };
