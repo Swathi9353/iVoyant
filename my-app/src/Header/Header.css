@@ -2,15 +2,18 @@
 header {
   background-color: #282c34;
   color: white;
-  padding: 60px;
+  padding: 20px;
   text-align: center;
- border-radius: 20px;
- border-radius: 30p;
-  
+  width: 100%;
+  box-sizing: border-box;
 }
 
 header h1 {
   margin: 0;
+}
+
+nav {
+  margin-top: 10px;
 }
 
 nav a {

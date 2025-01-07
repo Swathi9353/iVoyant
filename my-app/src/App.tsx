@@ -1,13 +1,13 @@
 // App.tsx
 import React from 'react';
-import Header from './Header//Header';
+import Header from './Header/Header';
 import MainContent from './Header/Maincontent';
 import Footer from './Header/Footer';
-import './App.css'
+import './App.css';
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="app-container">
       <Header />
       <MainContent />
       <Footer />

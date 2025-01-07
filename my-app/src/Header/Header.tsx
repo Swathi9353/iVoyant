@@ -1,16 +1,18 @@
-import react from 'react';
+// Header.tsx
+import React from 'react';
 import './Header.css';
 
-const Header: react.FC=() =>{
-    return (
-        <header>
-            <h1>"Welcome to My Website!"</h1>
-            <nav>
-                <a href="#">Home </a>
-                <a href="#">ABout </a>
-                <a href="#">Contact </a>
-            </nav>
-        </header>
-    );
+const Header: React.FC = () => {
+  return (
+    <header>
+      <h1 >Welcome to My Website!</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+  );
 }
+
 export default Header;
