@@ -1,12 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+// App.tsx
 import React from 'react';
-import Header from './Header/Header';
-import MainContent from './Header/MainContent';
+import Header from './Header//Header';
+import MainContent from './Header/Maincontent';
 import Footer from './Header/Footer';
 
-
-function App() {
+const App: React.FC = () => {
   return (
     <div>
       <Header />
