@@ -9,7 +9,7 @@ const Product: React.FC<ProductProps> = (props) => {
   return (
     <div>
       <h2>Product: {props.name}</h2>
-      <p>Price: ${props.price.toFixed(2)}</p>
+      <p>Price: ${props.price}</p>
     </div>
   );
 };

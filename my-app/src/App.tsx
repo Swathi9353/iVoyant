@@ -6,7 +6,7 @@ const App: React.FC = () => {
 return (
     <div>
     <Person name="Alice" age={30} />
-      <Product name="Laptop" price={999.99} />
+    <Product name="Laptop" price={999.99} />
     </div>
   );
 };
