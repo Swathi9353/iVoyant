@@ -1,6 +1,17 @@
-import react from 'react';
+import React from 'react';
 
-const Person: React.FC = () => {
-    
-    return
+interface PersonProps {
+  name: string;
+  age: number;
 }
+
+const Person: React.FC<PersonProps> = (props) => {
+  return (
+    <div>
+      <h2>Name: {props.name}</h2>
+      <p>Age: {props.age}</p>
+    </div>
+  );
+};
+
+export default Person;
