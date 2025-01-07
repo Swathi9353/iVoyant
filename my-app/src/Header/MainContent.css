@@ -1,0 +1,14 @@
+/* MainContent.css */
+main {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+main h2 {
+  color: #333;
+}
+
+main p {
+  color: #555;
+  line-height: 1.6;
+}

@@ -1,4 +1,5 @@
 import react from 'react';
+import './Header.css';
 
 const Header: react.FC=() =>{
     return (
