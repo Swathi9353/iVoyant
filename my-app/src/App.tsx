@@ -1,20 +1,15 @@
 import React from 'react';
+import ParentFormComponent from './Components/ParentFormComponent';
 import './App.css';
-import PersonalDetailsForm from './Components/PersonalDetailsForm';
+import './Components/FormComponent.css';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>Personal Details Form</h1>
-      <div className="container">
-        <div className="image-container">
-          <img src="https://tse4.mm.bing.net/th?id=OIP.8yx2NDFxRGceFqfMkJgNrwAAAA&pid=Api&P=0&h=180" alt="Descriptive text" />
-        </div>
-        <div className="form-container">
-          <PersonalDetailsForm />
-        </div>
-      </div>
+    <div className="app-container">
+      <h1>Registration Form</h1>
+      <ParentFormComponent />
     </div>
   );
-}
+};
+
 export default App;
