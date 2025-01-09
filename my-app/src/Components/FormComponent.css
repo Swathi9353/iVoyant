@@ -5,7 +5,7 @@
   max-width: 500px;
   width: 100%;
   padding: 20px;
-  background-color: #efeaea;
+  background-color: #fff;
   border: 1px solid #ccc;
   position: relative;  /* Ensures child elements can be positioned absolutely within the form */
 }
@@ -28,8 +28,8 @@ button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 6px;
-
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
