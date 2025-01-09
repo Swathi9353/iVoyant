@@ -30,7 +30,6 @@ class ParentFormComponent extends React.Component {
 
   handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    alert('Form submitted successfully')
     console.log('Form submitted:', this.formValues);
   };
 

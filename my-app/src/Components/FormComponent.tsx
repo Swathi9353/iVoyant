@@ -17,7 +17,6 @@ interface FormProps {
 
 const FormComponent: React.FC<FormProps> = ({ formValues, onInputChange, onSubmit }) => (
   <div className="form-container">
-    
     {/* Imaginary tag in the top-right corner */}
     
 
