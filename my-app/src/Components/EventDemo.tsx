@@ -19,7 +19,7 @@ const EventDemo: React.FC = () => {
 
   const handleMouseOut = () => {
     sethovercolor("white");
-  };
+  };                                                                                                                        
 
   return (
     <div>
@@ -32,8 +32,8 @@ const EventDemo: React.FC = () => {
           onMouseOver={handleMouseOver}
           onMouseOut={handleMouseOut}
           style={{ backgroundColor: hoverColor }}
-        >
-          Hover over this text
+        >Hover on this text
+      
         </p>
       </div>
     </div>
