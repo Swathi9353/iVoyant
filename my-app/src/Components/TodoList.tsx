@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 
 type Todo = string;
 
-function TodoList() {
+const TodoList=()=> {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>("");
 

@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 
-const Counter:React.FC=()=> {
-  // Initialize state with a value of 0
+const Counter=()=> {
   const [count, setCount] = useState(0);
-
-  // Function to increment the counter
-  const increment=() => {
-    setCount(count + 1);
-  };
-
+  
+  
   return (
     <div>
-      <h2>Counter</h2>
-      <p>Current count: {count}</p>
-      <button onClick={increment}>Increment</button>
+      <h1>Count: {count}</h1>
+      <button onClick={() =>setCount(count+1)}>increment</button>
     </div>
   );
 }
+
 
 export default Counter;
