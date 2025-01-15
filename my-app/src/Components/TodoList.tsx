@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 
-// Define the shape of a todo item
+
 type Todo = string;
 
 function TodoList() {
@@ -11,7 +11,7 @@ function TodoList() {
     e.preventDefault();
     if (newTodo.trim()) {
       setTodos([...todos, newTodo]);
-      setNewTodo("");
+      setNewTodo("");// clear the input field after adding.
     }
   };
 

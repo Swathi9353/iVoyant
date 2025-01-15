@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState,ChangeEvent } from "react";
 
 // Define the shape of the profile object
 interface ProfileState {

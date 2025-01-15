@@ -6,7 +6,7 @@ interface ShoppingItem {
   quantity: string;
 }
 
-function ShoppingList() {
+const ShoppingList=()=> {
   const [items, setItems] = useState<ShoppingItem[]>([]);
   const [newItem, setNewItem] = useState<ShoppingItem>({
     name: "",
