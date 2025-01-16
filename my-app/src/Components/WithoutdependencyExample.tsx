@@ -19,6 +19,7 @@ function NoDependencyExample() {
       <p>Count: {count}</p>
       <button onClick={ handleSubmit}>increment</button>
     </div>
+    
   );
 }
 

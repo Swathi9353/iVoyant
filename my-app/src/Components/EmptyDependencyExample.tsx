@@ -13,5 +13,4 @@ function EmptyDependencyExample () {
     Check the console log for messages.
   </div>;
 }
-
 export default EmptyDependencyExample;
