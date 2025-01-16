@@ -1,6 +1,6 @@
 import {useEffect } from 'react';
 
-function EmptyDependencyExample () {
+function EmptyDependencyExample (){
   useEffect(() => {
     console.log('Effect ran once');
 
