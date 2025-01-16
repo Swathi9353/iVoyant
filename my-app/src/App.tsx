@@ -1,6 +1,7 @@
 
 import './App.css'
 import EmptyDependencyExample from './Components/EmptyDependencyExample'
+import TimerComponent from './Components/TimerComponent'
 import SpecificDependencyExample from './Components/WithdependencyExample'
 import NoDependencyExample from './Components/WithoutdependencyExample'
 
@@ -13,7 +14,8 @@ function App() {
       
         <EmptyDependencyExample />
         <SpecificDependencyExample />
-        <NoDependencyExample/>
+      <NoDependencyExample />
+      <TimerComponent/>
 
   
     </>
