@@ -1,6 +1,6 @@
-import React, {useEffect } from 'react';
+import {useEffect } from 'react';
 
-function EmptyDependencyExample() {
+function EmptyDependencyExample () {
   useEffect(() => {
     console.log('Effect ran once');
 
@@ -9,7 +9,9 @@ function EmptyDependencyExample() {
     };
   }, []); // Empty dependency array
 
-  return <div>Check the console log for messages.</div>;
+  return <div>
+    Check the console log for messages.
+  </div>;
 }
 
 export default EmptyDependencyExample;
