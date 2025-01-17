@@ -1,13 +1,17 @@
 import React from "react";
 import Weather from "./Weather/Weather";
 import UserStatus from "./Weather/UserStatus";
-import Greeting from "./Weather/Greeting";
+
 import "./App.css";
+import DateTimeDisplay from "./Weather/CurrentTime";
 
 const App: React.FC = () => {
   return (
     <div>
       <h1>Conditional Rendering in React</h1>
+      <div>
+        <DateTimeDisplay/>
+      </div>
 
       {/* Weather component */}
       <Weather temperature={10} />
@@ -19,10 +23,7 @@ const App: React.FC = () => {
       <UserStatus loggedIn={true} isAdmin={false} />
       <UserStatus loggedIn={false} isAdmin={false} />
 
-      {/* Greeting component */}
-      <Greeting timeOfDay="morning" />
-      <Greeting timeOfDay="afternoon" />
-      <Greeting timeOfDay="evening" />
+    
     </div>
   );
 };

@@ -1,17 +1,20 @@
-import React from 'react';
+import React from "react";
 
-interface GreetingProps {
-  timeOfDay: 'morning' | 'afternoon' | 'evening';
-}
+const Greeting: React.FC = () => {
+  // Get the current hour of the day (0-23)
+  const currentHour = new Date().getHours();
 
-const Greeting: React.FC<GreetingProps> = ({ timeOfDay }) => {
+  // Determine time of day based on the current hour
+  const timeOfDay =
+    currentHour < 12 ? "morning" : currentHour < 18 ? "afternoon" : "evening";
+
   return (
     <p>
-      {timeOfDay === 'morning'
-        ? 'Good morning!'
-        : timeOfDay === 'afternoon'
-        ? 'Good afternoon!'
-        : 'Good evening!'}
+      {timeOfDay === "morning"
+        ? "Good morning!"
+        : timeOfDay === "afternoon"
+        ? "Good afternoon!"
+        : "Good evening!"}
     </p>
   );
 };
