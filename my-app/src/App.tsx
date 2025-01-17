@@ -1,8 +1,8 @@
-import React from 'react';
-import Weather from './Weather/Weather';
-import UserStatus from './Weather/UserStatus';
-import Greeting from './Weather/Greeting';
-import './App.css'
+import React from "react";
+import Weather from "./Weather/Weather";
+import UserStatus from "./Weather/UserStatus";
+import Greeting from "./Weather/Greeting";
+import "./App.css";
 
 const App: React.FC = () => {
   return (
