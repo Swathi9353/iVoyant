@@ -13,7 +13,7 @@ const FetchDataEffect: React.FC = () => {
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
-      .then((data: Post[]) => setPost(data[0])) // Type the fetched data as an array of Post
+      .then((data: Post[]) => setPost(data[0])) // Type the fetched data as an array of Post                                                                         
       .catch((error) => console.error("Error fetching data:", error));
   }, []); // Empty dependency array ensures this runs only once on mount
 
