@@ -27,7 +27,8 @@ const UsingMapApi: React.FC = () => {
       <h1>Fetch Data Effect Example</h1>
       {post.map((data) => (
         <p> {data.title}title</p>
-      ))}
+      
+      ))}                                   
     </div>
   );
 };
