@@ -4,6 +4,7 @@ import UserStatus from "./Weather/UserStatus";
 
 import "./App.css";
 import DateTimeDisplay from "./Weather/CurrentTime";
+import Greeting from "./Weather/Greeting";
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <h1>Conditional Rendering in React</h1>
       <div>
         <DateTimeDisplay/>
+        <Greeting/>
       </div>
 
       {/* Weather component */}
