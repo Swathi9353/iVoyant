@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// Define the structure of the post data
 interface Post {
   userId: number;
   id: number;
@@ -8,29 +7,39 @@ interface Post {
   body: string;
 }
 
-const UsingMapApi: React.FC = () => {
-  // State to store the fetched post
-  const [post, setPost] = useState<Post[]>([]);
+const FetchDataEffect: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
 
-  // useEffect to fetch data when the component mounts
   useEffect(() => {
-    // Fetch data from the API
     fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json()) // Convert the response to JSON
-      .then((data) => setPost(data as Post[])) // Set the first post in the state
-      .catch((error) => console.error("Error fetching data:", error)); // Handle errors
+      .then((response) => response.json())
+      .then((data: Post[]) => setPosts(data)) // Set the array of posts
+      .catch((error) => console.error("Error fetching data:", error));
   }, []); // Empty dependency array ensures this runs only once on mount
 
-  // Render the fetched post title or a loading message
   return (
     <div>
       <h1>Fetch Data Effect Example</h1>
-      {post.map((data) => (
-        <p> {data.title}title</p>
-      
-      ))}                                   
+      {posts.length > 0 ? (
+        posts.map((post) => (
+          <div
+            key={post.id}>
+            <h2>{post.title}</h2>
+          
+            <p>
+              <strong>ID:</strong> {post.id}
+            </p>
+            <p>
+              <strong>User ID:</strong> {post.userId}
+            </p>
+            <p>{post.body}</p>
+          </div>
+        ))
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
 
-export default UsingMapApi;
+export default FetchDataEffect;
