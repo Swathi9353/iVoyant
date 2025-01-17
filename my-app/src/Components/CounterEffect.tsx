@@ -6,12 +6,15 @@ const CounterEffect = () => {
   useEffect(() => {
     document.title = `Count: ${count}`;
   }, [count]); // Dependency array with `count` ensures it runs on count changes
+const handleSubmit = () => {
+  setCount(count + 1);
+};
 
   return (
     <div>
       <h1>Counter Effect Example</h1>
       <p>Current Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={handleSubmit}>Increment</button>
     </div>
   );
 };
