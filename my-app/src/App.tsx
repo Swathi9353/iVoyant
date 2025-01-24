@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import ProductCard from "./Components/ProductCard";
+import Cart from "./Components/Cart";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
 }
 
-export default App
+const App: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Fetch products from the API
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("https://fakestoreapi.com/products");
+        const data = await response.json();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  // Add product to cart
+  const addToCart = (product: Product) => {
+    setCartItems((prevItems) => [...prevItems, product]);
+  };
+
+  return (
+    <div className="app">
+      <h1>Product Store</h1>
+      <div className="products">
+        {loading ? (
+          <p>Loading products...</p>
+        ) : (
+          products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              addToCart={addToCart}
+            />
+          ))
+        )}
+      </div>
+      <Cart cartItems={cartItems} />
+    </div>
+  );
+};
+
+export default App;
