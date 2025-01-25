@@ -14,8 +14,8 @@ const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<Product[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [showCart, setShowCart] = useState<boolean>(false); 
 
-  // Fetch products from the API
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -32,28 +32,28 @@ const App: React.FC = () => {
     fetchProducts();
   }, []);
 
-  // Add product to cart
   const addToCart = (product: Product) => {
     setCartItems((prevItems) => [...prevItems, product]);
   };
 
+  
   return (
     <div className="app">
-      <h1>Product Store</h1>
-      <div className="products">
+      <header className="header">
+        <h1>Product Store</h1>
+        <button onClick={() => setShowCart(!showCart)}>
+        </button>
+      </header>
+      <div className="product-grid">
         {loading ? (
           <p>Loading products...</p>
         ) : (
           products.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              addToCart={addToCart}
-            />
+            <ProductCard key={product.id} product={product} addToCart={addToCart} />
           ))
         )}
       </div>
-      <Cart cartItems={cartItems} />
+      {showCart && <Cart cartItems={cartItems} />}
     </div>
   );
 };
