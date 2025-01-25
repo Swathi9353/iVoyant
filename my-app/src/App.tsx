@@ -20,7 +20,7 @@ const App: React.FC = () => {
     const fetchProducts = async () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
-      const productList = data.slice(0, 10).map((item:any, index: number) => ({
+      const productList = data.slice(0,10).map((item: any, index: number) => ({
         id: index,
         name: item.title,
         description: item.description,
@@ -42,7 +42,7 @@ const App: React.FC = () => {
   };
 
   const calculateTotalPrice = () => {
-    return cart.reduce((total, product) => total + product.price, 0).toFixed(2);
+    return cart.reduce((total, product) => total + product.price,0);
   };
 
   return (
@@ -53,7 +53,9 @@ const App: React.FC = () => {
           className="cart-toggle-button"
           onClick={() => setShowCart((prev) => !prev)}
         >
-          {showCart ? "Hide Cart" : `Show Cart (${cart.length})`}
+            
+    {showCart ? "Hide Cart" : `Show Cart (${cart.length})`}
+
         </button>
       </div>
       {!showCart ? (
