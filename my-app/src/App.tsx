@@ -24,8 +24,9 @@ const App: React.FC = () => {
         id: index,
         name: item.title,
         description: item.description,
-        price: item.price,
-        image: item.image,
+        price: item.price,  
+        image: item.image
+        
       }));
       setProducts(productList);
     };
