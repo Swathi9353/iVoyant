@@ -1,27 +1,22 @@
-import React from "react";
-import "./Auth.css"
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
-import Login from "./Components/Login";
-import Signup from "./Components/SignUp"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./Components/Header";
 import Home from "./Components/Home";
+// import About from "./About";
+// import Contact from "./Contact";
 
-const App: React.FC = () => {
+function App() {
   return (
+
     <Router>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        {/* Redirect to Home if no matching route is found */}
-        <Route path="*" element={<Navigate to="/" />} />
+        {/* <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} /> */}
       </Routes>
-    </Router>
+      </Router>
+      
   );
-};
+}
 
 export default App;
