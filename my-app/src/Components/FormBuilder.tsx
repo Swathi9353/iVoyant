@@ -82,6 +82,13 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
       prev.map((item) => (item.id === id ? { ...item, label: newLabel } : item))
     );
   };
+  const [istruer,setistruer]= useState(false);
+
+  const handleEdit = (id) => {
+  setistruer(!istruer)
+    
+    
+  }
 
   return (
     <div
@@ -109,7 +116,7 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
             key={item.id}
             style={{
               padding: "10px",
-              background: "#e0e0e0",
+              background: "#f0f0f0",
               margin: "5px",
               borderRadius: "6px",
               minWidth: "100px",
@@ -117,18 +124,21 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
               position: "relative",
             }}
           >
-            <input
+            {istruer?<input
               type="text"
               value={item.label}
               onChange={(e) => handleLabelChange(item.id, e.target.value)}
               style={{
                 border: "none",
-                background: "transparent",
                 textAlign: "center",
                 fontWeight: "bold",
                 width: "100%",
               }}
-            />
+            />:<div style={{
+                border: "none",
+                textAlign: "center",
+                width: "100%",
+              }}>{ item.type}</div>}
             {item.type === "button" ? (
               <button style={{ padding: "5px 10px", cursor: "pointer" }}>
                 {item.label}
@@ -161,8 +171,8 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
             ) : (
               <input
                 type={item.type}
-                placeholder={item.label}
-                style={{ padding: "5px", width: "100%" }}
+                placeholder="enter text"
+                style={{ padding: "5px", width: "100%"}}
               />
             )}
 
@@ -186,11 +196,11 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
                 top: "5px",
                 right: "30px", // Adjust position to not overlap delete
                 background: "transparent",
-                border: "none",
+                border: "1px solid ",
                 cursor: "pointer",
               }}
             >
-              <Pencil size={18} color="blue" />
+              <Pencil  size={10} color="blue" />
             </button>
           </div>
         ))
