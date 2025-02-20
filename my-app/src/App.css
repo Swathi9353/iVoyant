@@ -1,6 +1,6 @@
 .header {
-  background-color: hsl(73, 100%, 50%);
-  color: rgb(167, 56, 219);
+  background-color: hsl(60, 19%, 89%);
+  color: rgb(178, 178, 178);
   padding: 15px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -27,7 +27,7 @@
 }
 
 .nav-links li a {
-  color: rgb(167, 56, 219);;
+  color: rgb(153, 150, 154);;
   text-decoration: none;
   font-size: 16px;
 }
@@ -39,7 +39,7 @@
 /* General styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
+  background-color: #dbdacd;
   margin: 0;
   padding: 20px;
 }
@@ -58,7 +58,7 @@ body {
   width: 250px;
   background: #ffffff;
   padding: 15px;
-  border-radius: 8px;
+  border-radius: 50px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -89,22 +89,20 @@ body {
   min-height: 300px;
   background: white;
   padding: 20px;
-  border: 2px dashed #ced4da;
+
   border-radius: 8px;
   text-align: center;
 }
 
-.drop-active {
-  border-color: #007bff;
-}
+
 
 .drop-placeholder {
-  color: #6c757d;
+  color: #d1dce6;
 }
 
 /* Dropped Items */
 .dropped-item {
-  background: #e9ecef;
+  
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 4px;
@@ -128,10 +126,6 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.btn:hover {
-  background: #218838;
 }
 
 /* Header */

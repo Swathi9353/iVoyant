@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
+import { Trash2 } from "lucide-react";
+import { Pencil } from "lucide-react";
 
 const features = [
   { id: "text", label: "Text Field", type: "text" },
@@ -24,13 +26,13 @@ const features = [
   },
 ];
 
-const DraggableItem = ({ feature }) => {
+const DraggableItem = ({ feature}) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: feature.id,
     data: feature,
   });
 
-  const style = {
+  const swathi= {
     transform: transform
       ? `translate(${transform.x}px, ${transform.y}px)`
       : "none",
@@ -45,11 +47,10 @@ const DraggableItem = ({ feature }) => {
   };
 
   return (
-    <div ref={setNodeRef} {...listeners} {...attributes} style={style}>
-      {feature.label}
-    </div>
+    <div ref={setNodeRef} {...listeners} {...attributes} style={swathi}>{feature.label}</div>
   );
 };
+
 
 const Sidebar = () => {
   return (
@@ -57,9 +58,7 @@ const Sidebar = () => {
       style={{
         width: "250px",
         padding: "10px",
-        background: "#f8f8f8",
-        borderRight: "2px solid #ccc",
-      }}
+}}
     >
       <h3 style={{ textAlign: "center", marginBottom: "10px" }}>
         Form Elements
@@ -71,8 +70,18 @@ const Sidebar = () => {
   );
 };
 
-const DropArea = ({ droppedItems }) => {
+const DropArea = ({ droppedItems, setDroppedItems }) => {
   const { isOver, setNodeRef } = useDroppable({ id: "drop-area" });
+
+  const handleDelete = (id) => {
+    setDroppedItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const handleLabelChange = (id, newLabel) => {
+    setDroppedItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, label: newLabel } : item))
+    );
+  };
 
   return (
     <div
@@ -102,11 +111,24 @@ const DropArea = ({ droppedItems }) => {
               padding: "10px",
               background: "#e0e0e0",
               margin: "5px",
-              borderRadius: "5px",
+              borderRadius: "6px",
               minWidth: "100px",
               textAlign: "center",
+              position: "relative",
             }}
           >
+            <input
+              type="text"
+              value={item.label}
+              onChange={(e) => handleLabelChange(item.id, e.target.value)}
+              style={{
+                border: "none",
+                background: "transparent",
+                textAlign: "center",
+                fontWeight: "bold",
+                width: "100%",
+              }}
+            />
             {item.type === "button" ? (
               <button style={{ padding: "5px 10px", cursor: "pointer" }}>
                 {item.label}
@@ -143,6 +165,33 @@ const DropArea = ({ droppedItems }) => {
                 style={{ padding: "5px", width: "100%" }}
               />
             )}
+
+            <button
+              onClick={() => handleDelete(item.id)}
+              style={{
+                position: "absolute",
+                top: "5px",
+                right: "5px",
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <Trash2 size={18} color="red" />
+            </button>
+            <button
+            onClick={() => handleEdit(item.id)}
+              style={{
+                position: "absolute",
+                top: "5px",
+                right: "30px", // Adjust position to not overlap delete
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <Pencil size={18} color="blue" />
+            </button>
           </div>
         ))
       )}
@@ -156,7 +205,8 @@ const FormBuilder = () => {
   const handleDragEnd = (event) => {
     const { over, active } = event;
     if (over && over.id === "drop-area") {
-      setDroppedItems((prev) => [...prev, active.data.current]);
+      const newItem = { ...active.data.current, id: crypto.randomUUID() }; // Generate unique ID
+      setDroppedItems((prev) => [...prev, newItem]);
     }
   };
 
@@ -164,7 +214,10 @@ const FormBuilder = () => {
     <DndContext onDragEnd={handleDragEnd}>
       <div style={{ display: "flex", height: "100vh" }}>
         <Sidebar />
-        <DropArea droppedItems={droppedItems} />
+        <DropArea
+          droppedItems={droppedItems}
+          setDroppedItems={setDroppedItems}
+        />
       </div>
     </DndContext>
   );
