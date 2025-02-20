@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
+import { DndContext, DragEndEvent, useDraggable, useDroppable } from "@dnd-kit/core";
 import { Trash2 } from "lucide-react";
 import { Pencil } from "lucide-react";
 
@@ -25,14 +25,19 @@ const features = [
     options: ["Option A", "Option B", "Option C"],
   },
 ];
-
-const DraggableItem = ({ feature}) => {
+interface Feature {
+  id: string;
+  label: string;
+  type: string;
+  options?: string[];
+}
+const DraggableItem = ({ feature}:{feature: Feature}) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: feature.id,
     data: feature,
   });
 
-  const swathi= {
+  const swathi: React.CSSProperties = {
     transform: transform
       ? `translate(${transform.x}px, ${transform.y}px)`
       : "none",
@@ -46,6 +51,7 @@ const DraggableItem = ({ feature}) => {
     borderRadius: "5px",
   };
 
+  
   return (
     <div ref={setNodeRef} {...listeners} {...attributes} style={swathi}>{feature.label}</div>
   );
@@ -70,21 +76,25 @@ const Sidebar = () => {
   );
 };
 
-const DropArea = ({ droppedItems, setDroppedItems }) => {
+const DropArea = ({ droppedItems, setDroppedItems }:{droppedItems: Feature[], setDroppedItems: (itens: Feature[])=>void}) => {
   const { isOver, setNodeRef } = useDroppable({ id: "drop-area" });
 
-  const handleDelete = (id) => {
-    setDroppedItems((prev) => prev.filter((item) => item.id !== id));
+  const handleDelete = (id: string) => {
+    const newItems=droppedItems.filter((item) => item.id !== id);
+    setDroppedItems(newItems);
   };
 
-  const handleLabelChange = (id, newLabel) => {
-    setDroppedItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, label: newLabel } : item))
+  const handleLabelChange = (id: string, newLabel: string) => {
+    setDroppedItems(
+      droppedItems.map((item) =>
+        item.id === id ? { ...item, label: newLabel } : item
+      )
     );
   };
   const [istruer,setistruer]= useState(false);
 
-  const handleEdit = (id) => {
+  const handleEdit = (id:string ) => {
+    console.log('Editing item with ID:', id);
   setistruer(!istruer)
     
     
@@ -149,7 +159,7 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
               </label>
             ) : item.type === "select" ? (
               <select style={{ padding: "5px", width: "100%" }}>
-                {item.options.map((option, index) => (
+                {item.options && item.options.map((option, index) => (
                   <option key={index} value={option}>
                     {option}
                   </option>
@@ -161,7 +171,7 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
               <h3 style={{ margin: "5px 0" }}>{item.label}</h3>
             ) : item.type === "radio" ? (
               <div>
-                {item.options.map((option, index) => (
+                {item.options && item.options.map((option, index) => (
                   <label key={index} style={{ display: "block" }}>
                     <input type="radio" name={item.id} value={option} />{" "}
                     {option}
@@ -208,14 +218,20 @@ const DropArea = ({ droppedItems, setDroppedItems }) => {
     </div>
   );
 };
-
+interface DroppedItems {
+  id: string;
+  type: string;
+  label: string;
+  options?: string[];
+}
 const FormBuilder = () => {
-  const [droppedItems, setDroppedItems] = useState([]);
+  const [droppedItems, setDroppedItems] = useState<DroppedItems[]>([]);
+  
 
-  const handleDragEnd = (event) => {
+  const handleDragEnd = (event:DragEndEvent) => {
     const { over, active } = event;
     if (over && over.id === "drop-area") {
-      const newItem = { ...active.data.current, id: crypto.randomUUID() }; // Generate unique ID
+      const newItem = { ...active.data.current, id: crypto.randomUUID(),type:'',label:'' }; // Generate unique ID
       setDroppedItems((prev) => [...prev, newItem]);
     }
   };
