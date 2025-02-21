@@ -22,17 +22,19 @@ const Pages: React.FC = () => {
             <Sider width="25%" style={siderStyle}>
               Form Components
               <Buttons />
-                      </Sider>
-                   
-                    
+            </Sider>
+
+            <div>
+                          <Content style={contentStyle}></Content>
+                          
+                          
+            </div>
 
             <Content style={contentStyle}>Drag the components here</Content>
           </Layout>
           <Footer style={footerStyle}>@copyright 2025</Footer>
         </Layout>
-        
-          </Flex>
-          
+      </Flex>
     </div>
   );
 };
