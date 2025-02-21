@@ -11,16 +11,17 @@ const headerStyle: React.CSSProperties = {
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
   minHeight: 550,
-  lineHeight: "120px",
+  lineHeight: "100px",
   color: "#fff",
   backgroundColor: "#0958d9",
 };
 
 const siderStyle: React.CSSProperties = {
   textAlign: "center",
-  lineHeight: "120px",
+  lineHeight: "100px",
   color: "#fff",
-  backgroundColor: "#1677ff",
+  
+  // backgroundColor: "#1677ff",
 };
 
 const footerStyle: React.CSSProperties = {
@@ -32,8 +33,7 @@ const footerStyle: React.CSSProperties = {
 const layoutStyle = {
   borderRadius: 8,
   overflow: "hidden",
-  width: "calc(150% - 8px)",
-  maxWidth: "calc(110% - 8px)",
+  maxWidth: "calc(100% - 8px)",
 };
 
 export {headerStyle, contentStyle, siderStyle, footerStyle, layoutStyle };
