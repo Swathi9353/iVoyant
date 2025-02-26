@@ -42,11 +42,7 @@ const Buttons: React.FC = () => {
     {
       id: 10,
       title: "Textarea",
-    },
-    {
-      id: 11,
-      title: "Button",
-    },
+    }
   ];
   data.map(( data) => console.log(data));
   return (
